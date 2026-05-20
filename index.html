@@ -3,172 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'atelier de Zazou - Décoration événementielle & Animation</title>
+    <title>L'atelier de Zazou | Décoration Événementielle & Scénographie</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts -->
+    <!-- Google Fonts style "Jolis Moments" -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
+        body { font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em; }
+        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; tracking: 0.02em; }
     </style>
 </head>
-<body class="bg-amber-50/30 text-stone-800">
+<body class="bg-[#FCFAF7] text-[#333333] antialiased">
 
-    <!-- NAV BAR -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-stone-100">
-        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl font-bold tracking-wide text-amber-700">L'atelier de Zazou</a>
-            <div class="hidden md:flex space-x-8 font-medium text-stone-600">
-                <a href="#services" class="hover:text-amber-600 transition">Prestations</a>
-                <a href="#a-propos" class="hover:text-amber-600 transition">À propos</a>
-                <a href="#galerie" class="hover:text-amber-600 transition">Galerie</a>
-                <a href="#contact" class="bg-amber-600 text-white px-5 py-2 rounded-full hover:bg-amber-700 transition shadow-sm">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="pt-32 pb-20 md:pt-44 md:pb-32 px-4 bg-gradient-to-b from-amber-100/40 to-transparent">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="text-amber-600 font-semibold tracking-widest uppercase text-sm block mb-4">Créateur de moments uniques</span>
-            <h1 class="text-4xl md:text-6xl font-black text-stone-900 leading-tight mb-6">
-                Décoration événementielle & Animation sur mesure
-            </h1>
-            <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Mariages, anniversaires, fêtes d'entreprise... Nous donnons vie à vos idées et transformons vos événements en souvenirs inoubliables.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="bg-stone-900 text-white px-8 py-4 rounded-full font-medium hover:bg-stone-800 transition shadow-lg">
-                    Discutons de votre projet
-                </a>
-                <a href="#services" class="bg-white text-stone-800 border border-stone-200 px-8 py-4 rounded-full font-medium hover:bg-stone-50 transition">
-                    Découvrir nos services
-                </a>
-            </div>
+    <!-- HEADER / NAVIGATION (Style épuré centré) -->
+    <header class="w-full py-8 px-6 bg-[#FCFAF7]/90 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-100">
+        <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-6">
+            <a href="#" class="text-3xl md:text-4xl font-light tracking-[0.2em] uppercase text-stone-800">
+                L'atelier de Zazou
+            </a>
+            <nav class="flex gap-8 text-[11px] uppercase tracking-[0.2em] text-stone-500 font-light">
+                <a href="#univers" class="hover:text-stone-900 transition">L'univers</a>
+                <a href="#prestations" class="hover:text-stone-900 transition">Prestations</a>
+                <a href="#galerie" class="hover:text-stone-900 transition">Galerie</a>
+                <a href="#contact" class="hover:text-stone-900 transition font-medium text-stone-800">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="py-20 max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Nos Prestations</h2>
-            <div class="w-16 h-1 bg-amber-500 mx-auto rounded"></div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Service 1 -->
-            <div class="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6">✨</div>
-                <h3 class="text-2xl font-bold text-stone-900 mb-3">Décoration Événementielle</h3>
-                <p class="text-stone-600 leading-relaxed mb-4">
-                    De la scénographie des tables à la création d'ambiances lumineuses et florales. Nous concevons un univers visuel qui vous ressemble, soigné dans les moindres détails.
-                </p>
-                <ul class="text-sm text-stone-500 space-y-2">
-                    <li>• Privatisation & Mariages</li>
-                    <li>• Événements d'entreprise</li>
-                    <li>• Customisation de photobooth</li>
-                </ul>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6">🎉</div>
-                <h3 class="text-2xl font-bold text-stone-900 mb-3">Animation & Ateliers</h3>
-                <p class="text-stone-600 leading-relaxed mb-4">
-                    Des animations dynamiques et créatives pour petits et grands. Nous rythmons votre événement pour installer une ambiance chaleureuse et festive.
-                </p>
-                <ul class="text-sm text-stone-500 space-y-2">
-                    <li>• Ateliers créatifs personnalisés</li>
-                    <li>• Animations enfants & adultes</li>
-                    <li>• Jeux en bois et animations thématiques</li>
-                </ul>
+    <!-- HERO SECTION (Minimaliste avec grande image/placeholder texturé) -->
+    <section class="relative min-h-[75vh] flex items-center justify-center bg-[#F3EFEA] px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-25 bg-[radial-gradient(#C4B5A5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-3xl mx-auto text-center relative z-10 space-y-6 px-4">
+            <span class="text-xs uppercase tracking-[0.3em] text-stone-500 block">Scénographie & Design d'Événements</span>
+            <h1 class="text-5xl md:text-7xl font-light text-stone-900 italic leading-tight">
+                Créateur de jolis souvenirs
+            </h1>
+            <p class="text-sm md:text-base text-stone-600 font-light max-w-xl mx-auto leading-relaxed tracking-wide pt-4">
+                Mariages intimes, belles fêtes de famille et animations sur mesure. Nous imaginons des décors élégants, poétiques et uniques.
+            </p>
+            <div class="pt-6">
+                <a href="#contact" class="inline-block text-[11px] uppercase tracking-[0.2em] border-b border-stone-850 pb-2 text-stone-800 hover:text-stone-500 hover:border-stone-400 transition">
+                    Racontez-nous votre projet →
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="a-propos" class="py-20 bg-stone-900 text-stone-100">
-        <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-amber-400 font-semibold tracking-widest uppercase text-sm block mb-2">Derrière l'atelier</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Hello, moi c'est Zazou !</h2>
-                <p class="text-stone-300 leading-relaxed mb-4">
-                    Passionnée par le partage, le fait-main et les détails qui font toute la différence, j'ai créé <strong>L'atelier de Zazou</strong> pour mettre ma créativité au service de vos moments de bonheur.
-                </p>
-                <p class="text-stone-300 leading-relaxed">
-                    Mon objectif ? Que vous n'ayez qu'à profiter de vos invités pendant que je m'occupe de rendre le lieu magique et l'ambiance mémorable.
-                </p>
+    <!-- SECTION L'UNIVERS (Asymétrique comme le site modèle) -->
+    <section id="univers" class="py-24 max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-5 space-y-6">
+            <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">L'approche</span>
+            <h2 class="text-4xl md:text-5xl font-light text-stone-950 italic">Le souci du détail, la poésie du moment.</h2>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">
+                Tout comme l'Atelier des Jolis Moments, notre philosophie repose sur l’écoute et l’authenticité. Nous ne créons pas seulement une décoration, nous concevons une atmosphère visuelle et sensorielle.
+            </p>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">
+                Des fleurs délicates aux animations qui font sourire les petits et les grands, chaque élément est pensé pour s'intégrer harmonieusement à votre histoire.
+            </p>
+        </div>
+        <div class="md:col-span-7 grid grid-cols-12 gap-4">
+            <!-- Placeholders élégants pour mimer l'esthétique photo haut de gamme -->
+            <div class="col-span-8 bg-[#EAE4DC] aspect-[3/4] rounded-sm flex items-center justify-center p-6 text-center text-xs tracking-widest text-stone-500 italic">
+                [ Photo Ambiance Table / Fine Art ]
             </div>
-            <!-- Placeholder pour une belle photo de Zazou ou de ses créations -->
-            <div class="bg-stone-800 h-80 rounded-3xl flex items-center justify-center border border-stone-700 text-stone-400">
-                <p class="text-center px-4 italic">[ Emplacement future photo de Zazou ou d'une réalisation ]</p>
+            <div class="col-span-4 bg-[#E2DCD3] aspect-[3/5] rounded-sm flex items-center justify-center p-4 text-center text-xs tracking-widest text-stone-500 italic self-end">
+                [ Détails Déco ]
             </div>
         </div>
     </section>
 
-    <!-- GALERIE APERÇU -->
-    <section id="galerie" class="py-20 max-w-6xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Un aperçu de nos réalisations</h2>
-            <p class="text-stone-600">Chaque événement est une nouvelle histoire à raconter.</p>
-        </div>
-        
-        <!-- Grille d'images fictives (placeholders élégants en attendant ses vraies photos) -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="bg-amber-100/50 aspect-square rounded-2xl flex items-center justify-center text-stone-400 text-sm">Photo Déco Table</div>
-            <div class="bg-amber-100/50 aspect-square rounded-2xl flex items-center justify-center text-stone-400 text-sm">Photo Atelier Créatif</div>
-            <div class="bg-amber-100/50 aspect-square rounded-2xl flex items-center justify-center text-stone-400 text-sm">Photo Ambiance Guinguette</div>
+    <!-- SECTION PRESTATIONS -->
+    <section id="prestations" class="py-20 bg-[#F8F5F0] border-y border-stone-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 space-y-2">
+                <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">Nos Services</span>
+                <h2 class="text-3xl md:text-4xl font-light text-stone-950">Accompagnement sur mesure</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">01. Scénographie</h3>
+                    <p class="text-xs text-stone-600 font-light leading-relaxed">
+                        Conception visuelle complète de votre événement : planches d'inspiration, recherche du mobilier, art de la table et papeterie.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">02. Animation</h3>
+                    <p class="text-xs text-stone-600 font-light leading-relaxed">
+                        Des ateliers créatifs et des animations élégantes pour divertir vos invités de manière ludique et raffinée.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">03. Coordination</h3>
+                    <p class="text-xs text-stone-600 font-light leading-relaxed">
+                        Présence le jour J pour la mise en place rigoureuse des éléments décoratifs afin que vous puissiez pleinement savourer l'instant.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-amber-50/50 border-t border-stone-100">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Parlons de votre projet</h2>
-                <p class="text-stone-600">Une idée, une envie, une question ? Laissez un message !</p>
+    <!-- FORMULAIRE DE CONTACT (Inspiré fidèlement de leur page de contact) -->
+    <section id="contact" class="py-24 max-w-3xl mx-auto px-6">
+        <div class="text-center mb-16 space-y-4">
+            <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">Contact</span>
+            <h2 class="text-4xl md:text-5xl font-light italic text-stone-900">Racontez-nous votre histoire</h2>
+            <p class="text-xs text-stone-500 font-light max-w-md mx-auto leading-relaxed">
+                Pour nous permettre de comprendre au mieux vos attentes, merci de remplir ce formulaire avec le plus de détails possible.
+            </p>
+        </div>
+
+        <form class="space-y-8 text-xs tracking-wide">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Votre Nom & Prénom *</label>
+                    <input type="text" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Adresse Email *</label>
+                    <input type="email" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
+                </div>
             </div>
 
-            <!-- Formulaire basique prêt à être branché (ex: Formspree ou Vercel Forms) -->
-            <form class="space-y-6 bg-white p-8 rounded-3xl shadow-sm border border-stone-100">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-2">Votre Nom</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-amber-500 bg-stone-50/50">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-2">Adresse Email</label>
-                        <input type="email" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-amber-500 bg-stone-50/50">
-                    </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Téléphone</label>
+                    <input type="tel" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-stone-700 mb-2">Type d'événement</label>
-                    <input type="text" placeholder="Ex: Mariage, Anniversaire, Arbre de Noël..." class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-amber-500 bg-stone-50/50">
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Date de l'événement *</label>
+                    <input type="text" placeholder="Ex: 24 Juin 2026" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-stone-700 mb-2">Dites-nous en plus</label>
-                    <textarea rows="4" placeholder="Date, lieu, nombre d'invités, vos inspirations..." class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-amber-500 bg-stone-50/50"></textarea>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Lieu de l'événement</label>
+                    <input type="text" placeholder="Domaine, ville..." class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
                 </div>
-                <button type="button" class="w-full bg-amber-600 text-white font-medium py-4 rounded-xl hover:bg-amber-700 transition shadow-md">
-                    Envoyer ma demande
+                <div class="space-y-2">
+                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Nombre d'invités estimé</label>
+                    <input type="number" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Parlez-nous de votre projet, de vos envies, de votre budget... *</label>
+                <textarea rows="5" required placeholder="Décrivez l'ambiance, les animations souhaitées, ce qui vous tient à cœur..." class="w-full bg-transparent border border-stone-300 p-4 rounded-sm focus:outline-none focus:border-stone-900 transition bg-white/50"></textarea>
+            </div>
+
+            <div class="text-center pt-4">
+                <button type="button" class="bg-stone-900 text-white uppercase tracking-[0.25em] text-[10px] px-10 py-4 hover:bg-stone-700 transition rounded-none shadow-sm">
+                    Envoyer la demande
                 </button>
-            </form>
-        </div>
+            </div>
+        </form>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-stone-900 text-stone-500 text-sm py-8 border-t border-stone-800">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:row justify-between items-center gap-4">
-            <p>&copy; 2026 L'atelier de Zazou. Tous droits réservés.</p>
-            <p class="text-stone-600">Fait avec ❤️ pour Zazou</p>
-        </div>
+    <!-- FOOTER MINIMALISTE -->
+    <footer class="bg-[#F8F5F0] text-stone-400 text-[10px] tracking-widest uppercase py-12 border-t border-stone-100 text-center space-y-2">
+        <p class="text-stone-600">&copy; 2026 L'atelier de Zazou. Tous droits réservés.</p>
+        <p class="text-stone-400 font-light">Inspiré par la poésie et le design</p>
     </footer>
 
 </body>
