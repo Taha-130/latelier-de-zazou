@@ -50,96 +50,35 @@ document.querySelectorAll('.nav-close').forEach(el =>
 
 
 /* ────────────────────────────────────────────────────────────
-   3. TOGGLE FORMULAIRE (Offre ↔ Avis)
-      + déclenchement depuis les CTAs hero/galerie
+   3. CHAMP "PRÉCISER" si type d'événement = Autre
 ──────────────────────────────────────────────────────────── */
-const tabOffre  = document.getElementById('tab-offre');
-const tabAvis   = document.getElementById('tab-avis');
-const formOffre = document.getElementById('form-offre');
-const formAvis  = document.getElementById('form-avis');
-const successEl = document.getElementById('form-success');
+const selectOffre   = document.getElementById('select-type-offre');
+const autreOffre    = document.getElementById('autre-detail-offre');
 
-function showTab(tab) {
-  successEl.classList.add('hidden');
-  if (tab === 'offre') {
-    formOffre.classList.remove('hidden');
-    formAvis.classList.add('hidden');
-    tabOffre.classList.add('is-active');
-    tabAvis.classList.remove('is-active');
-  } else {
-    formAvis.classList.remove('hidden');
-    formOffre.classList.add('hidden');
-    tabAvis.classList.add('is-active');
-    tabOffre.classList.remove('is-active');
-  }
-}
-
-tabOffre.addEventListener('click', () => showTab('offre'));
-tabAvis.addEventListener('click',  () => showTab('avis'));
-
-document.querySelectorAll('.cta-link[data-target]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.getAttribute('data-target');
-    if (target) setTimeout(() => showTab(target), 350);
+if (selectOffre && autreOffre) {
+  selectOffre.addEventListener('change', () => {
+    const isAutre = selectOffre.value === 'Autre';
+    autreOffre.classList.toggle('hidden', !isAutre);
+    if (!isAutre) autreOffre.querySelector('input').value = '';
   });
-});
+}
 
 
 /* ────────────────────────────────────────────────────────────
-   4. NOTATION PAR ÉTOILES
-──────────────────────────────────────────────────────────── */
-const stars     = document.querySelectorAll('#star-row .star');
-const ratingVal = document.getElementById('rating-val');
-
-function renderStars(upTo) {
-  stars.forEach((s, i) => s.classList.toggle('lit', i < upTo));
-}
-
-stars.forEach(star => {
-  const v = parseInt(star.dataset.v);
-  star.addEventListener('mouseover',  () => renderStars(v));
-  star.addEventListener('mouseleave', () => renderStars(parseInt(ratingVal.value) || 0));
-  star.addEventListener('click', () => {
-    ratingVal.value = v;
-    renderStars(v);
-  });
-});
-
-document.getElementById('star-row').addEventListener('mouseleave', () => {
-  renderStars(parseInt(ratingVal.value) || 0);
-});
-
-
-/* ────────────────────────────────────────────────────────────
-   5. CHAMP "PRÉCISER" si type d'événement = Autre
-──────────────────────────────────────────────────────────── */
-function watchAutreSelect(selectId, detailId) {
-  const sel    = document.getElementById(selectId);
-  const detail = document.getElementById(detailId);
-  if (!sel || !detail) return;
-  sel.addEventListener('change', () => {
-    const isAutre = sel.value === 'Autre';
-    detail.classList.toggle('hidden', !isAutre);
-    if (!isAutre) detail.querySelector('input').value = '';
-  });
-}
-watchAutreSelect('select-type-offre', 'autre-detail-offre');
-watchAutreSelect('select-type-avis',  'autre-detail-avis');
-
-
-/* ────────────────────────────────────────────────────────────
-   6. ENVOI DES FORMULAIRES VIA FORMSPREE
+   4. ENVOI DU FORMULAIRE VIA FORMSPREE
       Endpoint : https://formspree.io/f/xnjrlvpa
       Les messages arrivent à : Latelierdezazou@gmail.com
 ──────────────────────────────────────────────────────────── */
-[formOffre, formAvis].forEach(form => {
-  const btn          = form.querySelector('[type="submit"]');
+const formOffre = document.getElementById('form-offre');
+const successEl = document.getElementById('form-success');
+
+if (formOffre) {
+  const btn          = formOffre.querySelector('[type="submit"]');
   const originalText = btn.textContent;
 
-  form.addEventListener('submit', async e => {
+  formOffre.addEventListener('submit', async e => {
     e.preventDefault();
 
-    /* État "chargement" */
     btn.textContent = 'Envoi en cours…';
     btn.disabled    = true;
 
@@ -147,41 +86,30 @@ watchAutreSelect('select-type-avis',  'autre-detail-avis');
       const response = await fetch(FORMSPREE_URL, {
         method:  'POST',
         headers: { 'Accept': 'application/json' },
-        body:    new FormData(form),
+        body:    new FormData(formOffre),
       });
 
       if (response.ok) {
-        /* ✅ Succès — affiche le message de confirmation */
-        form.classList.add('hidden');
+        formOffre.classList.add('hidden');
         successEl.classList.remove('hidden');
 
-        /* Réinitialisation après 7 secondes */
         setTimeout(() => {
           successEl.classList.add('hidden');
-          form.classList.remove('hidden');
-          form.reset();
-          renderStars(0);
-          ratingVal.value    = 0;
-          btn.textContent    = originalText;
-          btn.disabled       = false;
-          /* Refermer les champs "Autre" si ouverts */
-          document.querySelectorAll('#autre-detail-offre, #autre-detail-avis')
-            .forEach(d => d.classList.add('hidden'));
+          formOffre.classList.remove('hidden');
+          formOffre.reset();
+          autreOffre && autreOffre.classList.add('hidden');
+          btn.textContent = originalText;
+          btn.disabled    = false;
         }, 7000);
 
       } else {
-        /* ❌ Erreur Formspree */
         btn.textContent = 'Une erreur est survenue — réessayez';
         btn.disabled    = false;
-        const data = await response.json().catch(() => ({}));
-        console.error('Formspree error:', data);
       }
 
-    } catch (networkErr) {
-      /* ❌ Erreur réseau */
+    } catch {
       btn.textContent = 'Erreur réseau — vérifiez votre connexion';
       btn.disabled    = false;
-      console.error('Network error:', networkErr);
     }
   });
-});
+}

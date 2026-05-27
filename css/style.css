@@ -63,26 +63,6 @@ body {
 .anim-3 { animation: fadeUp 1.1s ease 0.65s both; }
 .anim-4 { animation: fadeUp 1.1s ease 0.90s both; }
 
-/* ── Toggle onglets formulaire ── */
-.tab-btn {
-  border-bottom: 2px solid transparent;
-  color: rgba(0, 43, 73, 0.35);
-  transition: color 0.25s, border-color 0.25s;
-}
-.tab-btn.is-active {
-  border-bottom-color: #C5A059;
-  color: #002B49;
-}
-
-/* ── Étoiles notation ── */
-.star {
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: rgba(0, 43, 73, 0.2);
-  transition: color 0.2s;
-}
-.star.lit { color: #C5A059; }
-
 /* ── Flèche select ── */
 .select-wrap { position: relative; }
 .select-wrap::after {
@@ -106,11 +86,9 @@ select { -webkit-appearance: none; appearance: none; }
 .scroll-arrow { animation: bounce 2s infinite; }
 
 /* ── Champ "Préciser" (Autre) — apparition douce ── */
-#autre-detail-offre,
-#autre-detail-avis {
+#autre-detail-offre {
   transition: opacity 0.3s ease;
 }
-#autre-detail-offre:not(.hidden),
-#autre-detail-avis:not(.hidden) {
+#autre-detail-offre:not(.hidden) {
   opacity: 1;
 }

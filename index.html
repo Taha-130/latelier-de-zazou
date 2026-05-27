@@ -42,15 +42,7 @@
 
 <body class="bg-cream text-navy">
 
-  <!-- ══ BANNIÈRE APERÇU (à supprimer avant mise en ligne officielle) ══ -->
-  <div id="banner-test"
-       class="fixed bottom-4 right-4 z-50 bg-navy/90 text-cream font-montserrat text-[9px]
-              tracking-[0.2em] uppercase px-4 py-2.5 rounded-full shadow-lg backdrop-blur-sm
-              flex items-center gap-2">
-    <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse inline-block"></span>
-    Aperçu — formulaires en test
-    <button onclick="this.parentElement.remove()" class="ml-2 text-cream/50 hover:text-cream text-xs leading-none">✕</button>
-  </div>
+
 
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -161,13 +153,9 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center anim-4">
-        <a href="#contact" data-target="offre"
+        <a href="#contact"
            class="cta-link font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-9 py-4 hover:bg-gold transition-colors duration-300 font-light">
           Recevoir une offre
-        </a>
-        <a href="#contact" data-target="avis"
-           class="cta-link font-montserrat text-[11px] tracking-[0.22em] uppercase border border-navy text-navy px-9 py-4 hover:border-gold hover:text-gold transition-colors duration-300 font-light">
-          Laisser un avis
         </a>
       </div>
 
@@ -367,18 +355,6 @@
         </a>
       </div>
 
-      <!-- Toggle Offre / Avis -->
-      <div class="flex border-b border-gold/25 mb-12">
-        <button id="tab-offre"
-                class="tab-btn is-active flex-1 pb-4 font-montserrat text-[10px] tracking-[0.22em] uppercase font-light">
-          Recevoir une offre
-        </button>
-        <button id="tab-avis"
-                class="tab-btn flex-1 pb-4 font-montserrat text-[10px] tracking-[0.22em] uppercase font-light">
-          Laisser un avis
-        </button>
-      </div>
-
       <!-- ── Formulaire : Demande d'offre ── -->
       <form id="form-offre" class="space-y-9" novalidate>
         <input type="hidden" name="type"   value="Demande d'offre" />
@@ -436,74 +412,6 @@
           <button type="submit"
                   class="w-full sm:w-auto font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-14 py-4 hover:bg-gold transition-colors duration-300 font-light block sm:mx-auto">
             Envoyer ma demande
-          </button>
-        </div>
-      </form>
-
-      <!-- ── Formulaire : Laisser un avis ── -->
-      <form id="form-avis" class="space-y-9 hidden" novalidate>
-        <input type="hidden" name="type"     value="Avis client" />
-        <input type="hidden" name="_subject" value="Nouvel avis client — L'Atelier de Zazou" />
-
-        <!-- Note explicative -->
-        <p class="font-montserrat text-[10px] text-navy/55 leading-[1.8] font-light italic border-l-2 border-gold/40 pl-4">
-          Votre avis sera relu et publié sur le site après validation — merci pour votre confiance.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
-          <div>
-            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre prénom</label>
-            <input type="text" name="prenom" placeholder="Marie, Lucas…" required class="input-line" />
-          </div>
-          <div>
-            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">
-              Email <span class="normal-case tracking-normal opacity-50">(facultatif)</span>
-            </label>
-            <input type="email" name="email" placeholder="votre@email.com" class="input-line" />
-          </div>
-        </div>
-
-        <div>
-          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Type d'événement vécu</label>
-          <div class="select-wrap">
-            <select id="select-type-avis" name="type_evenement" class="input-line cursor-pointer">
-              <option value="" disabled selected>Sélectionnez un type…</option>
-              <option>Mariage</option>
-              <option>Anniversaire</option>
-              <option>Baby Shower</option>
-              <option>Baptême</option>
-              <option>Événement d'entreprise</option>
-              <option value="Autre">Autre</option>
-            </select>
-          </div>
-          <div id="autre-detail-avis" class="hidden mt-6">
-            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Précisez votre événement</label>
-            <input type="text" name="type_autre" placeholder="Décrivez votre événement…" class="input-line" />
-          </div>
-        </div>
-
-        <div>
-          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-4">Votre note</label>
-          <div id="star-row" class="flex gap-2.5" role="group" aria-label="Notation">
-            <span class="star" data-v="1" aria-label="1 étoile">★</span>
-            <span class="star" data-v="2" aria-label="2 étoiles">★</span>
-            <span class="star" data-v="3" aria-label="3 étoiles">★</span>
-            <span class="star" data-v="4" aria-label="4 étoiles">★</span>
-            <span class="star" data-v="5" aria-label="5 étoiles">★</span>
-          </div>
-          <input type="hidden" id="rating-val" name="note" value="0" />
-        </div>
-
-        <div>
-          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre témoignage</label>
-          <textarea name="temoignage" placeholder="Partagez votre expérience avec L'Atelier de Zazou…"
-                    rows="5" required class="input-line resize-none"></textarea>
-        </div>
-
-        <div class="pt-2">
-          <button type="submit"
-                  class="w-full sm:w-auto font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-14 py-4 hover:bg-gold transition-colors duration-300 font-light block sm:mx-auto">
-            Publier mon avis
           </button>
         </div>
       </form>
