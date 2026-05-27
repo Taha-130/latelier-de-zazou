@@ -1,0 +1,116 @@
+/* ============================================================
+   L'Atelier de Zazou — Styles personnalisés
+   (Les classes utilitaires sont gérées par Tailwind CDN)
+============================================================ */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FCFAF7;
+  color: #002B49;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Inputs ligne basse (pas de bloc gris) ── */
+.input-line {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #C5A059;
+  outline: none;
+  padding: 0.55rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: #002B49;
+  transition: border-color 0.25s;
+}
+.input-line::placeholder { color: #002B49; opacity: 0.35; }
+.input-line:focus        { border-bottom-color: #002B49; }
+
+/* ── Trait or décoratif ── */
+.gold-line {
+  display: block;
+  width: 52px;
+  height: 1px;
+  background: #C5A059;
+  margin: 1.4rem auto;
+}
+
+/* ── Navbar — transition transparent → fond ── */
+#navbar {
+  transition: padding 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* ── Galerie — hover zoom doux ── */
+.gallery-item { overflow: hidden; }
+.gallery-item img {
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+/* ── Animations d'entrée hero ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 1.1s ease both; }
+.anim-2 { animation: fadeUp 1.1s ease 0.35s both; }
+.anim-3 { animation: fadeUp 1.1s ease 0.65s both; }
+.anim-4 { animation: fadeUp 1.1s ease 0.90s both; }
+
+/* ── Toggle onglets formulaire ── */
+.tab-btn {
+  border-bottom: 2px solid transparent;
+  color: rgba(0, 43, 73, 0.35);
+  transition: color 0.25s, border-color 0.25s;
+}
+.tab-btn.is-active {
+  border-bottom-color: #C5A059;
+  color: #002B49;
+}
+
+/* ── Étoiles notation ── */
+.star {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: rgba(0, 43, 73, 0.2);
+  transition: color 0.2s;
+}
+.star.lit { color: #C5A059; }
+
+/* ── Flèche select ── */
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #C5A059;
+  pointer-events: none;
+}
+select { -webkit-appearance: none; appearance: none; }
+
+/* ── Indicateur scroll hero ── */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+.scroll-arrow { animation: bounce 2s infinite; }
+
+/* ── Champ "Préciser" (Autre) — apparition douce ── */
+#autre-detail-offre,
+#autre-detail-avis {
+  transition: opacity 0.3s ease;
+}
+#autre-detail-offre:not(.hidden),
+#autre-detail-avis:not(.hidden) {
+  opacity: 1;
+}

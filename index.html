@@ -1,172 +1,575 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'atelier de Zazou | Décoration Événementielle & Scénographie</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts style "Jolis Moments" -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em; }
-        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; tracking: 0.02em; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Atelier de Zazou — Créateurs d'émotions</title>
+  <meta name="description" content="L'Atelier de Zazou crée des événements sur-mesure : mariages, anniversaires, baby showers. Décoration, animation, scénographie haut de gamme." />
+
+  <!-- ── Tailwind config (doit précéder le CDN) ── -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    /* La config est définie AVANT le chargement du CDN */
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:  '#002B49',
+            gold:  '#C5A059',
+            sky:   '#A5C9CA',
+            cream: '#FCFAF7',
+          },
+          fontFamily: {
+            cormorant:  ['"Cormorant Garamond"', 'serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- ── Google Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- ── Styles personnalisés ── -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-[#FCFAF7] text-[#333333] antialiased">
 
-    <!-- HEADER / NAVIGATION (Style épuré centré) -->
-    <header class="w-full py-8 px-6 bg-[#FCFAF7]/90 backdrop-blur-sm sticky top-0 z-50 border-b border-stone-100">
-        <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-6">
-            <a href="#" class="text-3xl md:text-4xl font-light tracking-[0.2em] uppercase text-stone-800">
-                L'atelier de Zazou
-            </a>
-            <nav class="flex gap-8 text-[11px] uppercase tracking-[0.2em] text-stone-500 font-light">
-                <a href="#univers" class="hover:text-stone-900 transition">L'univers</a>
-                <a href="#prestations" class="hover:text-stone-900 transition">Prestations</a>
-                <a href="#galerie" class="hover:text-stone-900 transition">Galerie</a>
-                <a href="#contact" class="hover:text-stone-900 transition font-medium text-stone-800">Contact</a>
-            </nav>
+<body class="bg-cream text-navy">
+
+  <!-- ══ BANNIÈRE APERÇU (à supprimer avant mise en ligne officielle) ══ -->
+  <div id="banner-test"
+       class="fixed bottom-4 right-4 z-50 bg-navy/90 text-cream font-montserrat text-[9px]
+              tracking-[0.2em] uppercase px-4 py-2.5 rounded-full shadow-lg backdrop-blur-sm
+              flex items-center gap-2">
+    <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse inline-block"></span>
+    Aperçu — formulaires en test
+    <button onclick="this.parentElement.remove()" class="ml-2 text-cream/50 hover:text-cream text-xs leading-none">✕</button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVBAR — logo centré, burger mobile, transparent → opaque
+  ═══════════════════════════════════════════════════════════ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 py-5 px-5 md:px-12">
+    <div class="relative flex items-center justify-between max-w-7xl mx-auto">
+
+      <!-- Burger (mobile gauche) -->
+      <button id="burger-btn" aria-label="Ouvrir le menu"
+              class="md:hidden flex flex-col gap-[5px] z-50 relative">
+        <span id="b1" class="block w-6 h-px bg-navy transition-all duration-300 origin-center"></span>
+        <span id="b2" class="block w-4 h-px bg-navy transition-all duration-300 ml-auto"></span>
+        <span id="b3" class="block w-6 h-px bg-navy transition-all duration-300 origin-center"></span>
+      </button>
+
+      <!-- Logo centré -->
+      <a href="#accueil"
+         class="absolute left-1/2 -translate-x-1/2 text-center leading-none select-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 28"
+             class="w-24 md:w-28 mx-auto mb-1" aria-hidden="true">
+          <ellipse cx="18" cy="14" rx="7"   ry="8.5" fill="#002B49" opacity=".9"/>
+          <ellipse cx="30" cy="9"  rx="6"   ry="7.5" fill="#C5A059" opacity=".85"/>
+          <ellipse cx="42" cy="13" rx="6.5" ry="8"   fill="#A5C9CA" opacity=".9"/>
+          <ellipse cx="68" cy="13" rx="6.5" ry="8"   fill="#A5C9CA" opacity=".9"/>
+          <ellipse cx="80" cy="9"  rx="6"   ry="7.5" fill="#C5A059" opacity=".85"/>
+          <ellipse cx="92" cy="14" rx="7"   ry="8.5" fill="#002B49" opacity=".9"/>
+          <path d="M18 22.5 Q17 26 18 27.5" stroke="#002B49" stroke-width=".8" fill="none" opacity=".5"/>
+          <path d="M30 16.5 Q29 20 30 21.5" stroke="#C5A059" stroke-width=".8" fill="none" opacity=".5"/>
+          <path d="M42 21  Q41 25 42 26.5"  stroke="#A5C9CA" stroke-width=".8" fill="none" opacity=".5"/>
+          <path d="M68 21  Q69 25 68 26.5"  stroke="#A5C9CA" stroke-width=".8" fill="none" opacity=".5"/>
+          <path d="M80 16.5 Q81 20 80 21.5" stroke="#C5A059" stroke-width=".8" fill="none" opacity=".5"/>
+          <path d="M92 22.5 Q93 26 92 27.5" stroke="#002B49" stroke-width=".8" fill="none" opacity=".5"/>
+          <text x="52" y="12" font-size="6" fill="#C5A059" opacity=".7" text-anchor="middle">✦</text>
+          <text x="58" y="7"  font-size="4" fill="#C5A059" opacity=".5" text-anchor="middle">✦</text>
+        </svg>
+        <span class="font-cormorant text-xl md:text-2xl font-light italic text-navy tracking-wide block">
+          L'Atelier de Zazou
+        </span>
+        <span class="hidden md:block font-montserrat text-[8px] tracking-[0.28em] uppercase text-gold font-light mt-0.5">
+          Créateurs d'émotions
+        </span>
+      </a>
+
+      <!-- Liens desktop -->
+      <nav class="hidden md:flex items-center gap-10 ml-auto">
+        <a href="#accueil"
+           class="font-montserrat text-[11px] tracking-[0.2em] uppercase text-navy/70 hover:text-gold transition-colors font-light">
+          Accueil
+        </a>
+        <a href="#galerie"
+           class="font-montserrat text-[11px] tracking-[0.2em] uppercase text-navy/70 hover:text-gold transition-colors font-light">
+          Galerie
+        </a>
+        <a href="#contact"
+           class="font-montserrat text-[11px] tracking-[0.2em] uppercase border border-gold text-gold px-5 py-2.5 hover:bg-gold hover:text-white transition-all duration-300 font-light">
+          Nous contacter
+        </a>
+      </nav>
+
+      <!-- CTA mobile -->
+      <a href="#contact"
+         class="md:hidden font-montserrat text-[9px] tracking-[0.18em] uppercase border border-gold text-gold px-3 py-2 font-light">
+        Devis
+      </a>
+    </div>
+  </header>
+
+  <!-- Menu mobile overlay -->
+  <div id="mobile-menu"
+       class="fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center gap-9
+              translate-x-full transition-transform duration-500 ease-in-out">
+    <span class="gold-line"></span>
+    <a href="#accueil" class="nav-close font-cormorant text-4xl italic font-light text-navy hover:text-gold transition-colors">Accueil</a>
+    <a href="#galerie" class="nav-close font-cormorant text-4xl italic font-light text-navy hover:text-gold transition-colors">Galerie</a>
+    <a href="#contact" class="nav-close font-cormorant text-4xl italic font-light text-navy hover:text-gold transition-colors">Contact</a>
+    <span class="gold-line"></span>
+    <p class="font-montserrat text-[9px] tracking-[0.3em] uppercase text-gold/70">
+      Créateurs d'émotions pour petits et grands
+    </p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1800&q=85"
+        alt="Décoration événementielle ballons"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-cream/72"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-7 max-w-xl mx-auto pt-28 pb-24">
+      <span class="gold-line anim-1"></span>
+
+      <h1 class="font-cormorant text-[3.2rem] md:text-[5rem] font-light italic text-navy leading-[1.1] mb-6 anim-2">
+        Des instants
+        <span class="not-italic font-normal" style="color:#C5A059">précieux</span>,<br>
+        magnifiés.
+      </h1>
+
+      <p class="font-montserrat text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-navy/80 font-light mb-12 anim-3">
+        Événementiel &nbsp;·&nbsp; Décoration &nbsp;·&nbsp; Animation
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center anim-4">
+        <a href="#contact" data-target="offre"
+           class="cta-link font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-9 py-4 hover:bg-gold transition-colors duration-300 font-light">
+          Recevoir une offre
+        </a>
+        <a href="#contact" data-target="avis"
+           class="cta-link font-montserrat text-[11px] tracking-[0.22em] uppercase border border-navy text-navy px-9 py-4 hover:border-gold hover:text-gold transition-colors duration-300 font-light">
+          Laisser un avis
+        </a>
+      </div>
+
+      <div class="mt-20 flex flex-col items-center gap-2 opacity-35 scroll-arrow">
+        <span class="font-montserrat text-[8px] tracking-[0.32em] uppercase">Découvrir</span>
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+          <path d="M7 1v14M1 9l6 8 6-8" stroke="#002B49" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PHILOSOPHIE
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 px-6 md:px-12 text-center bg-cream">
+    <div class="max-w-xl mx-auto">
+      <p class="font-montserrat text-[9px] tracking-[0.38em] uppercase text-gold font-light mb-5">
+        Notre philosophie
+      </p>
+      <span class="gold-line"></span>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-light italic text-navy leading-snug mb-8">
+        Chaque célébration mérite<br>d'être unique.
+      </h2>
+      <p class="font-montserrat text-[12px] md:text-[13px] leading-[2] text-navy/75 font-light">
+        L'Atelier de Zazou transforme vos rêves en réalité avec une attention méticuleuse portée à chaque détail. Du mariage intime à l'anniversaire grandiose, nous orchestrons des émotions qui traversent le temps.
+      </p>
+      <span class="gold-line"></span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       UNIVERS / SERVICES
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-28 px-6 md:px-12 bg-[#F5F0EA]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 md:mb-20">
+        <p class="font-montserrat text-[9px] tracking-[0.38em] uppercase text-gold font-light mb-4">
+          Ce que nous créons
+        </p>
+        <h2 class="font-cormorant text-4xl md:text-5xl font-light italic text-navy">Nos univers</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+
+        <div class="group text-center">
+          <div class="gallery-item mb-6 aspect-[3/4] bg-sky/20">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=700&q=80"
+                 alt="Décoration mariage" class="w-full h-full object-cover" />
+          </div>
+          <p class="font-montserrat text-[8px] tracking-[0.35em] uppercase text-gold font-light mb-2">01</p>
+          <h3 class="font-cormorant text-2xl italic font-light text-navy mb-3">Mariages</h3>
+          <p class="font-montserrat text-[11px] text-navy/70 leading-[1.9] font-light">
+            Tables fleuries, arches de ballons, espaces féeriques. Votre Jour J sublimé.
+          </p>
         </div>
-    </header>
 
-    <!-- HERO SECTION (Minimaliste avec grande image/placeholder texturé) -->
-    <section class="relative min-h-[75vh] flex items-center justify-center bg-[#F3EFEA] px-4 overflow-hidden">
-        <div class="absolute inset-0 opacity-25 bg-[radial-gradient(#C4B5A5_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-3xl mx-auto text-center relative z-10 space-y-6 px-4">
-            <span class="text-xs uppercase tracking-[0.3em] text-stone-500 block">Scénographie & Design d'Événements</span>
-            <h1 class="text-5xl md:text-7xl font-light text-stone-900 italic leading-tight">
-                Créateur de jolis souvenirs
-            </h1>
-            <p class="text-sm md:text-base text-stone-600 font-light max-w-xl mx-auto leading-relaxed tracking-wide pt-4">
-                Mariages intimes, belles fêtes de famille et animations sur mesure. Nous imaginons des décors élégants, poétiques et uniques.
-            </p>
-            <div class="pt-6">
-                <a href="#contact" class="inline-block text-[11px] uppercase tracking-[0.2em] border-b border-stone-850 pb-2 text-stone-800 hover:text-stone-500 hover:border-stone-400 transition">
-                    Racontez-nous votre projet →
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION L'UNIVERS (Asymétrique comme le site modèle) -->
-    <section id="univers" class="py-24 max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
-        <div class="md:col-span-5 space-y-6">
-            <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">L'approche</span>
-            <h2 class="text-4xl md:text-5xl font-light text-stone-950 italic">Le souci du détail, la poésie du moment.</h2>
-            <p class="text-sm text-stone-600 font-light leading-relaxed">
-                Tout comme l'Atelier des Jolis Moments, notre philosophie repose sur l’écoute et l’authenticité. Nous ne créons pas seulement une décoration, nous concevons une atmosphère visuelle et sensorielle.
-            </p>
-            <p class="text-sm text-stone-600 font-light leading-relaxed">
-                Des fleurs délicates aux animations qui font sourire les petits et les grands, chaque élément est pensé pour s'intégrer harmonieusement à votre histoire.
-            </p>
-        </div>
-        <div class="md:col-span-7 grid grid-cols-12 gap-4">
-            <!-- Placeholders élégants pour mimer l'esthétique photo haut de gamme -->
-            <div class="col-span-8 bg-[#EAE4DC] aspect-[3/4] rounded-sm flex items-center justify-center p-6 text-center text-xs tracking-widest text-stone-500 italic">
-                [ Photo Ambiance Table / Fine Art ]
-            </div>
-            <div class="col-span-4 bg-[#E2DCD3] aspect-[3/5] rounded-sm flex items-center justify-center p-4 text-center text-xs tracking-widest text-stone-500 italic self-end">
-                [ Détails Déco ]
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION PRESTATIONS -->
-    <section id="prestations" class="py-20 bg-[#F8F5F0] border-y border-stone-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 space-y-2">
-                <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">Nos Services</span>
-                <h2 class="text-3xl md:text-4xl font-light text-stone-950">Accompagnement sur mesure</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="space-y-4">
-                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">01. Scénographie</h3>
-                    <p class="text-xs text-stone-600 font-light leading-relaxed">
-                        Conception visuelle complète de votre événement : planches d'inspiration, recherche du mobilier, art de la table et papeterie.
-                    </p>
-                </div>
-                <div class="space-y-4">
-                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">02. Animation</h3>
-                    <p class="text-xs text-stone-600 font-light leading-relaxed">
-                        Des ateliers créatifs et des animations élégantes pour divertir vos invités de manière ludique et raffinée.
-                    </p>
-                </div>
-                <div class="space-y-4">
-                    <h3 class="text-2xl font-light italic border-b border-stone-200 pb-3 text-stone-900">03. Coordination</h3>
-                    <p class="text-xs text-stone-600 font-light leading-relaxed">
-                        Présence le jour J pour la mise en place rigoureuse des éléments décoratifs afin que vous puissiez pleinement savourer l'instant.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULAIRE DE CONTACT (Inspiré fidèlement de leur page de contact) -->
-    <section id="contact" class="py-24 max-w-3xl mx-auto px-6">
-        <div class="text-center mb-16 space-y-4">
-            <span class="text-xs uppercase tracking-[0.3em] text-stone-400 block">Contact</span>
-            <h2 class="text-4xl md:text-5xl font-light italic text-stone-900">Racontez-nous votre histoire</h2>
-            <p class="text-xs text-stone-500 font-light max-w-md mx-auto leading-relaxed">
-                Pour nous permettre de comprendre au mieux vos attentes, merci de remplir ce formulaire avec le plus de détails possible.
-            </p>
+        <div class="group text-center md:mt-14">
+          <div class="gallery-item mb-6 aspect-[3/4] bg-gold/10">
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=700&q=80"
+                 alt="Décoration anniversaire ballons" class="w-full h-full object-cover" />
+          </div>
+          <p class="font-montserrat text-[8px] tracking-[0.35em] uppercase text-gold font-light mb-2">02</p>
+          <h3 class="font-cormorant text-2xl italic font-light text-navy mb-3">Anniversaires</h3>
+          <p class="font-montserrat text-[11px] text-navy/70 leading-[1.9] font-light">
+            Des créations sur-mesure qui font briller les yeux des plus petits aux grands.
+          </p>
         </div>
 
-        <form class="space-y-8 text-xs tracking-wide">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Votre Nom & Prénom *</label>
-                    <input type="text" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Adresse Email *</label>
-                    <input type="email" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-            </div>
+        <div class="group text-center">
+          <div class="gallery-item mb-6 aspect-[3/4] bg-navy/5">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&q=80"
+                 alt="Événement décoration table" class="w-full h-full object-cover" />
+          </div>
+          <p class="font-montserrat text-[8px] tracking-[0.35em] uppercase text-gold font-light mb-2">03</p>
+          <h3 class="font-cormorant text-2xl italic font-light text-navy mb-3">Événements</h3>
+          <p class="font-montserrat text-[11px] text-navy/70 leading-[1.9] font-light">
+            Baby showers, baptêmes, soirées d'entreprise. Chaque moment, une création.
+          </p>
+        </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Téléphone</label>
-                    <input type="tel" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Date de l'événement *</label>
-                    <input type="text" placeholder="Ex: 24 Juin 2026" required class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Lieu de l'événement</label>
-                    <input type="text" placeholder="Domaine, ville..." class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Nombre d'invités estimé</label>
-                    <input type="number" class="w-full bg-transparent border-b border-stone-300 py-2 focus:outline-none focus:border-stone-900 transition">
-                </div>
-            </div>
 
-            <div class="space-y-2">
-                <label class="uppercase tracking-widest text-[10px] text-stone-500 block">Parlez-nous de votre projet, de vos envies, de votre budget... *</label>
-                <textarea rows="5" required placeholder="Décrivez l'ambiance, les animations souhaitées, ce qui vous tient à cœur..." class="w-full bg-transparent border border-stone-300 p-4 rounded-sm focus:outline-none focus:border-stone-900 transition bg-white/50"></textarea>
-            </div>
+  <!-- ═══════════════════════════════════════════════════════════
+       GALERIE
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="galerie" class="py-24 md:py-36 px-5 md:px-12 bg-cream">
+    <div class="max-w-6xl mx-auto">
 
-            <div class="text-center pt-4">
-                <button type="button" class="bg-stone-900 text-white uppercase tracking-[0.25em] text-[10px] px-10 py-4 hover:bg-stone-700 transition rounded-none shadow-sm">
-                    Envoyer la demande
-                </button>
-            </div>
-        </form>
-    </section>
+      <div class="text-center mb-14">
+        <p class="font-montserrat text-[9px] tracking-[0.38em] uppercase text-gold font-light mb-4">
+          Portfolio
+        </p>
+        <h2 class="font-cormorant text-4xl md:text-5xl font-light italic text-navy">Nos réalisations</h2>
+        <span class="gold-line"></span>
+      </div>
 
-    <!-- FOOTER MINIMALISTE -->
-    <footer class="bg-[#F8F5F0] text-stone-400 text-[10px] tracking-widest uppercase py-12 border-t border-stone-100 text-center space-y-2">
-        <p class="text-stone-600">&copy; 2026 L'atelier de Zazou. Tous droits réservés.</p>
-        <p class="text-stone-400 font-light">Inspiré par la poésie et le design</p>
-    </footer>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-3">
+
+        <div class="gallery-item row-span-2 col-span-1">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80"
+               alt="Arche de ballons" class="w-full h-full object-cover" style="min-height:420px;" />
+        </div>
+
+        <div class="gallery-item col-span-1 md:col-span-2">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80"
+               alt="Table de mariage" class="w-full object-cover" style="height:200px;" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80"
+               alt="Décoration de table" class="w-full object-cover aspect-square" />
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+               alt="Ballons dorés" class="w-full object-cover aspect-square" />
+        </div>
+
+        <div class="gallery-item col-span-2 md:col-span-2">
+          <img src="https://images.unsplash.com/photo-1578922746465-3a80a228f223?w=1000&q=80"
+               alt="Décoration florale événement" class="w-full object-cover" style="height:240px;" />
+        </div>
+
+        <div class="gallery-item col-span-1 hidden md:block">
+          <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&q=80"
+               alt="Baby shower décoration" class="w-full object-cover" style="height:240px;" />
+        </div>
+
+        <div class="gallery-item md:hidden">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+               alt="Portrait décoration" class="w-full object-cover aspect-square" />
+        </div>
+        <div class="gallery-item md:hidden">
+          <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?w=600&q=80"
+               alt="Animation événement" class="w-full object-cover aspect-square" />
+        </div>
+
+      </div>
+
+      <div class="text-center mt-14">
+        <a href="#contact" data-target="offre"
+           class="cta-link font-montserrat text-[11px] tracking-[0.22em] uppercase border border-navy text-navy px-12 py-4 hover:bg-navy hover:text-cream transition-all duration-300 font-light">
+          Réserver votre événement
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TÉMOIGNAGE (exemple — sera remplacé par un vrai avis)
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 px-6 md:px-12 bg-navy text-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-montserrat text-[9px] tracking-[0.38em] uppercase text-gold font-light mb-8">
+        Ils nous font confiance
+      </p>
+      <blockquote class="font-cormorant text-3xl md:text-4xl italic font-light leading-snug mb-8">
+        "Une magie incomparable. Chaque détail était exactement comme je l'avais imaginé, et même au-delà."
+      </blockquote>
+      <p class="font-montserrat text-[10px] tracking-[0.28em] uppercase text-sky font-light">
+        — Sophie M., &nbsp;Mariage 2024
+      </p>
+      <span class="block w-px h-12 bg-gold/30 mx-auto mt-10"></span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FORMULAIRE DE CONTACT
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="contact" class="py-24 md:py-36 px-6 md:px-12 bg-cream">
+    <div class="max-w-xl mx-auto">
+
+      <div class="text-center mb-14">
+        <p class="font-montserrat text-[9px] tracking-[0.38em] uppercase text-gold font-light mb-4">
+          Parlons de votre projet
+        </p>
+        <h2 class="font-cormorant text-4xl md:text-5xl font-light italic text-navy">
+          Prenons contact
+        </h2>
+        <span class="gold-line"></span>
+        <p class="font-montserrat text-[11px] text-navy/70 leading-[1.9] font-light">
+          Partagez votre vision avec nous —<br class="hidden sm:block" />
+          nous vous répondons sous 24 heures.
+        </p>
+        <!-- Téléphone cliquable -->
+        <a href="tel:0622888520"
+           class="inline-block mt-4 font-montserrat text-[12px] tracking-[0.12em] text-navy/80 hover:text-gold transition-colors font-light">
+          ☎&ensp;06 22 88 85 20
+        </a>
+      </div>
+
+      <!-- Toggle Offre / Avis -->
+      <div class="flex border-b border-gold/25 mb-12">
+        <button id="tab-offre"
+                class="tab-btn is-active flex-1 pb-4 font-montserrat text-[10px] tracking-[0.22em] uppercase font-light">
+          Recevoir une offre
+        </button>
+        <button id="tab-avis"
+                class="tab-btn flex-1 pb-4 font-montserrat text-[10px] tracking-[0.22em] uppercase font-light">
+          Laisser un avis
+        </button>
+      </div>
+
+      <!-- ── Formulaire : Demande d'offre ── -->
+      <form id="form-offre" class="space-y-9" novalidate>
+        <input type="hidden" name="type"   value="Demande d'offre" />
+        <input type="hidden" name="_subject" value="Nouvelle demande d'offre — L'Atelier de Zazou" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Nom complet</label>
+            <input type="text" name="nom" placeholder="Votre nom" required class="input-line" />
+          </div>
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Adresse e-mail</label>
+            <input type="email" name="email" placeholder="votre@email.com" required class="input-line" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Date de l'événement</label>
+            <input type="date" name="date" required class="input-line" />
+          </div>
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Lieu / Ville</label>
+            <input type="text" name="lieu" placeholder="Paris, Lyon, salle…" class="input-line" />
+          </div>
+        </div>
+
+        <div>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Type d'événement</label>
+          <div class="select-wrap">
+            <select id="select-type-offre" name="type_evenement" class="input-line cursor-pointer">
+              <option value="" disabled selected>Sélectionnez un type…</option>
+              <option>Mariage</option>
+              <option>Anniversaire</option>
+              <option>Baby Shower</option>
+              <option>Baptême</option>
+              <option>Événement d'entreprise</option>
+              <option>EVJF / EVG</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div id="autre-detail-offre" class="hidden mt-6">
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Précisez votre événement</label>
+            <input type="text" name="type_autre" placeholder="Décrivez votre événement…" class="input-line" />
+          </div>
+        </div>
+
+        <div>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre vision & budget indicatif</label>
+          <textarea name="message" placeholder="Décrivez votre rêve, vos envies, le nombre de personnes…"
+                    rows="4" class="input-line resize-none"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+                  class="w-full sm:w-auto font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-14 py-4 hover:bg-gold transition-colors duration-300 font-light block sm:mx-auto">
+            Envoyer ma demande
+          </button>
+        </div>
+      </form>
+
+      <!-- ── Formulaire : Laisser un avis ── -->
+      <form id="form-avis" class="space-y-9 hidden" novalidate>
+        <input type="hidden" name="type"     value="Avis client" />
+        <input type="hidden" name="_subject" value="Nouvel avis client — L'Atelier de Zazou" />
+
+        <!-- Note explicative -->
+        <p class="font-montserrat text-[10px] text-navy/55 leading-[1.8] font-light italic border-l-2 border-gold/40 pl-4">
+          Votre avis sera relu et publié sur le site après validation — merci pour votre confiance.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre prénom</label>
+            <input type="text" name="prenom" placeholder="Marie, Lucas…" required class="input-line" />
+          </div>
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">
+              Email <span class="normal-case tracking-normal opacity-50">(facultatif)</span>
+            </label>
+            <input type="email" name="email" placeholder="votre@email.com" class="input-line" />
+          </div>
+        </div>
+
+        <div>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Type d'événement vécu</label>
+          <div class="select-wrap">
+            <select id="select-type-avis" name="type_evenement" class="input-line cursor-pointer">
+              <option value="" disabled selected>Sélectionnez un type…</option>
+              <option>Mariage</option>
+              <option>Anniversaire</option>
+              <option>Baby Shower</option>
+              <option>Baptême</option>
+              <option>Événement d'entreprise</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div id="autre-detail-avis" class="hidden mt-6">
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Précisez votre événement</label>
+            <input type="text" name="type_autre" placeholder="Décrivez votre événement…" class="input-line" />
+          </div>
+        </div>
+
+        <div>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-4">Votre note</label>
+          <div id="star-row" class="flex gap-2.5" role="group" aria-label="Notation">
+            <span class="star" data-v="1" aria-label="1 étoile">★</span>
+            <span class="star" data-v="2" aria-label="2 étoiles">★</span>
+            <span class="star" data-v="3" aria-label="3 étoiles">★</span>
+            <span class="star" data-v="4" aria-label="4 étoiles">★</span>
+            <span class="star" data-v="5" aria-label="5 étoiles">★</span>
+          </div>
+          <input type="hidden" id="rating-val" name="note" value="0" />
+        </div>
+
+        <div>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre témoignage</label>
+          <textarea name="temoignage" placeholder="Partagez votre expérience avec L'Atelier de Zazou…"
+                    rows="5" required class="input-line resize-none"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+                  class="w-full sm:w-auto font-montserrat text-[11px] tracking-[0.22em] uppercase bg-navy text-cream px-14 py-4 hover:bg-gold transition-colors duration-300 font-light block sm:mx-auto">
+            Publier mon avis
+          </button>
+        </div>
+      </form>
+
+      <!-- Message de confirmation -->
+      <div id="form-success" class="hidden text-center py-16">
+        <span class="gold-line"></span>
+        <p class="font-cormorant text-3xl md:text-4xl italic font-light text-navy mb-4">Merci infiniment.</p>
+        <p class="font-montserrat text-[11px] text-navy/70 font-light leading-[1.9]">
+          Nous avons bien reçu votre message et<br />
+          reviendrons vers vous dans les meilleurs délais.
+        </p>
+        <span class="gold-line"></span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="bg-navy py-16 md:py-20 px-6 md:px-12 text-center">
+    <div class="max-w-4xl mx-auto">
+
+      <p class="font-cormorant text-3xl italic font-light text-cream mb-1">L'Atelier de Zazou</p>
+      <p class="font-montserrat text-[8px] tracking-[0.3em] uppercase text-gold font-light mb-10">
+        Créateurs d'émotions pour petits et grands
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-10">
+        <a href="#accueil" class="font-montserrat text-[9px] tracking-[0.22em] uppercase text-cream/40 hover:text-gold transition-colors font-light">Accueil</a>
+        <span class="text-gold/20">·</span>
+        <a href="#galerie" class="font-montserrat text-[9px] tracking-[0.22em] uppercase text-cream/40 hover:text-gold transition-colors font-light">Galerie</a>
+        <span class="text-gold/20">·</span>
+        <a href="#contact" class="font-montserrat text-[9px] tracking-[0.22em] uppercase text-cream/40 hover:text-gold transition-colors font-light">Contact</a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 mb-8">
+        <a href="https://www.instagram.com/latelier_de_zazou/" target="_blank" rel="noopener"
+           class="font-montserrat text-[9px] tracking-[0.22em] uppercase text-sky/60 hover:text-sky transition-colors font-light">
+          Instagram
+        </a>
+        <span class="text-gold/20">·</span>
+        <a href="mailto:Latelierdezazou@gmail.com"
+           class="font-montserrat text-[9px] tracking-[0.22em] uppercase text-sky/60 hover:text-sky transition-colors font-light">
+          Latelierdezazou@gmail.com
+        </a>
+        <span class="text-gold/20">·</span>
+        <a href="tel:0622888520"
+           class="font-montserrat text-[9px] tracking-[0.18em] text-sky/60 hover:text-sky transition-colors font-light">
+          06 22 88 85 20
+        </a>
+      </div>
+
+      <span class="block w-14 h-px bg-gold/15 mx-auto mb-8"></span>
+      <p class="font-montserrat text-[8px] text-cream/20 font-light">
+        © 2025 L'Atelier de Zazou — Tous droits réservés
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- ── JS principal (Formspree + interactions) ── -->
+  <script src="js/main.js" defer></script>
 
 </body>
 </html>
