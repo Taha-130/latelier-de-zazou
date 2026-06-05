@@ -366,45 +366,67 @@
             <input type="text" name="nom" placeholder="Votre nom" required class="input-line" />
           </div>
           <div>
-            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Adresse e-mail</label>
-            <input type="email" name="email" placeholder="votre@email.com" required class="input-line" />
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Téléphone</label>
+            <input type="tel" name="telephone" placeholder="06 00 00 00 00" required class="input-line" />
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
           <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Adresse e-mail</label>
+            <input type="email" name="email" placeholder="votre@email.com" required class="input-line" />
+          </div>
+          <div>
             <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Date de l'événement</label>
             <input type="date" name="date" required class="input-line" />
           </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
           <div>
             <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Lieu / Ville</label>
             <input type="text" name="lieu" placeholder="Paris, Lyon, salle…" class="input-line" />
           </div>
+          <div>
+            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Type d'événement</label>
+            <div class="select-wrap">
+              <select id="select-type-offre" name="type_evenement" class="input-line cursor-pointer">
+                <option value="" disabled selected>Sélectionnez…</option>
+                <option>Mariage</option>
+                <option>Anniversaire</option>
+                <option>Baby Shower</option>
+                <option>Baptême</option>
+                <option>Événement d'entreprise</option>
+                <option>EVJF / EVG</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="autre-detail-offre" class="hidden">
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Précisez votre événement</label>
+          <input type="text" name="type_autre" placeholder="Décrivez votre événement…" class="input-line" />
         </div>
 
         <div>
-          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Type d'événement</label>
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Budget — hors frais d'agence</label>
           <div class="select-wrap">
-            <select id="select-type-offre" name="type_evenement" class="input-line cursor-pointer">
-              <option value="" disabled selected>Sélectionnez un type…</option>
-              <option>Mariage</option>
-              <option>Anniversaire</option>
-              <option>Baby Shower</option>
-              <option>Baptême</option>
-              <option>Événement d'entreprise</option>
-              <option>EVJF / EVG</option>
-              <option value="Autre">Autre</option>
+            <select name="budget" required class="input-line cursor-pointer">
+              <option value="" disabled selected>Sélectionnez une tranche…</option>
+              <option>700 – 1 000 €</option>
+              <option>1 000 – 1 500 €</option>
+              <option>1 500 – 2 000 €</option>
+              <option>2 000 – 3 000 €</option>
+              <option>Plus de 3 000 €</option>
+              <option>Moins de 700 € (Pros uniquement)</option>
             </select>
           </div>
-          <div id="autre-detail-offre" class="hidden mt-6">
-            <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Précisez votre événement</label>
-            <input type="text" name="type_autre" placeholder="Décrivez votre événement…" class="input-line" />
-          </div>
         </div>
 
         <div>
-          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre vision & budget indicatif</label>
-          <textarea name="message" placeholder="Décrivez votre rêve, vos envies, le nombre de personnes…"
+          <label class="font-montserrat text-[8px] tracking-[0.32em] uppercase text-gold font-light block mb-3">Votre message</label>
+          <textarea name="message" placeholder="Décrivez votre événement, vos envies, le nombre de personnes…"
                     rows="4" class="input-line resize-none"></textarea>
         </div>
 
