@@ -52,8 +52,8 @@ document.querySelectorAll('.nav-close').forEach(el =>
 /* ────────────────────────────────────────────────────────────
    3. CHAMP "PRÉCISER" si type d'événement = Autre
 ──────────────────────────────────────────────────────────── */
-const selectOffre   = document.getElementById('select-type-offre');
-const autreOffre    = document.getElementById('autre-detail-offre');
+const selectOffre = document.getElementById('select-type-offre');
+const autreOffre  = document.getElementById('autre-detail-offre');
 
 if (selectOffre && autreOffre) {
   selectOffre.addEventListener('change', () => {
@@ -65,9 +65,72 @@ if (selectOffre && autreOffre) {
 
 
 /* ────────────────────────────────────────────────────────────
-   4. ENVOI DU FORMULAIRE VIA FORMSPREE
-      Endpoint : https://formspree.io/f/xnjrlvpa
-      Les messages arrivent à : Latelierdezazou@gmail.com
+   4. VALIDATION — téléphone 10 chiffres + email format
+──────────────────────────────────────────────────────────── */
+
+/* Affiche un message d'erreur sous le champ */
+function showError(input, msg) {
+  clearError(input);
+  input.style.borderBottomColor = '#c0392b';
+  const err = document.createElement('p');
+  err.className   = 'field-error';
+  err.textContent = msg;
+  err.style.cssText = 'font-family:Montserrat,sans-serif;font-size:10px;color:#c0392b;margin-top:4px;font-weight:300;';
+  input.parentNode.appendChild(err);
+}
+
+function clearError(input) {
+  input.style.borderBottomColor = '';
+  const prev = input.parentNode.querySelector('.field-error');
+  if (prev) prev.remove();
+}
+
+/* Efface l'erreur dès que l'utilisateur retape */
+function watchField(input) {
+  input.addEventListener('input', () => clearError(input), { once: true });
+}
+
+function validateForm(form) {
+  let valid = true;
+
+  /* Champs required vides */
+  form.querySelectorAll('[required]').forEach(field => {
+    if (!field.value.trim()) {
+      showError(field, 'Ce champ est obligatoire.');
+      watchField(field);
+      valid = false;
+    }
+  });
+
+  /* Format e-mail */
+  const emailField = form.querySelector('[type="email"]');
+  if (emailField && emailField.value.trim()) {
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailField.value.trim());
+    if (!emailOk) {
+      showError(emailField, 'Adresse e-mail invalide.');
+      watchField(emailField);
+      valid = false;
+    }
+  }
+
+  /* Téléphone : 10 chiffres (espaces / tirets / points acceptés à la saisie) */
+  const telField = form.querySelector('[type="tel"]');
+  if (telField && telField.value.trim()) {
+    const digits = telField.value.replace(/[\s.\-]/g, '');
+    const telOk  = /^0[1-9]\d{8}$/.test(digits);
+    if (!telOk) {
+      showError(telField, 'Numéro invalide — 10 chiffres attendus (ex : 06 12 34 56 78).');
+      watchField(telField);
+      valid = false;
+    }
+  }
+
+  return valid;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   5. ENVOI DU FORMULAIRE VIA FORMSPREE
 ──────────────────────────────────────────────────────────── */
 const formOffre = document.getElementById('form-offre');
 const successEl = document.getElementById('form-success');
@@ -78,6 +141,8 @@ if (formOffre) {
 
   formOffre.addEventListener('submit', async e => {
     e.preventDefault();
+
+    if (!validateForm(formOffre)) return;
 
     btn.textContent = 'Envoi en cours…';
     btn.disabled    = true;
