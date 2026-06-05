@@ -1,8 +1,8 @@
 /* ============================================================
-   L'atelier de Zazou — JavaScript principal
+   L'atelier de zazou — JavaScript principal
 ============================================================ */
 
-const FORMSPREE_URL = 'https://formspree.io/f/xeeweaeq';
+const FORMSPREE_URL = 'https://formspree.io/f/xnjrlvpa';
 
 /* ────────────────────────────────────────────────────────────
    1. NAVBAR — transparent → fond crème + ombre au scroll
