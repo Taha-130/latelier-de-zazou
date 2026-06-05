@@ -1,5 +1,5 @@
 /* ============================================================
-   L'Atelier de Zazou — JavaScript principal
+   L'atelier de Zazou — JavaScript principal
 ============================================================ */
 
 const FORMSPREE_URL = 'https://formspree.io/f/xeeweaeq';
