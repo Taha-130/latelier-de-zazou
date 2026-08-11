@@ -119,7 +119,7 @@ function validateForm(form) {
     const digits = telField.value.replace(/[\s.\-]/g, '');
     const telOk  = /^0[1-9]\d{8}$/.test(digits);
     if (!telOk) {
-      showError(telField, 'Numéro invalide — 10 chiffres attendus (ex : 06 12 34 56 78).');
+      showError(telField, 'Numéro invalide : 10 chiffres attendus (ex : 06 12 34 56 78).');
       watchField(telField);
       valid = false;
     }
@@ -168,12 +168,12 @@ if (formOffre) {
         }, 7000);
 
       } else {
-        btn.textContent = 'Une erreur est survenue — réessayez';
+        btn.textContent = 'Une erreur est survenue, réessayez';
         btn.disabled    = false;
       }
 
     } catch {
-      btn.textContent = 'Erreur réseau — vérifiez votre connexion';
+      btn.textContent = 'Erreur réseau, vérifiez votre connexion';
       btn.disabled    = false;
     }
   });
